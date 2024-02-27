@@ -1,1 +1,1 @@
-import FormValidity from './form-validity';
+export FormValidity from './form-validity';

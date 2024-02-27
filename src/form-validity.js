@@ -18,6 +18,7 @@ export default class FormValidity {
     this.options = Object.assign({
       'headers': {}, // Additional HTTP headers for the validation API endpoint.
       'messageClass': 'validity-message', // The class of the invalid message.
+      'fieldParam': 'field',
       'insertContainer': false, // Automatically try to insert a message container if one is not provided.
     }, options);
 
@@ -87,7 +88,7 @@ export default class FormValidity {
     this.checkRequired(field);
 
     const url = new URL(this.api, window.location.origin);
-    url.searchParams.append('field_name', field.name);
+    url.searchParams.append(this.options.fieldParam, field.name);
 
     let data = new FormData(this.form);
     for (const content of this.form.querySelectorAll('div[contenteditable]')) {
