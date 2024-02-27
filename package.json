@@ -1,0 +1,30 @@
+{
+  "name": "b-forms",
+  "version": "0.0.1",
+  "description": "Form validation.",
+  "main": "src/index.js",
+  "dependencies": {
+    "mutation-initialiser": "^0.1.5"
+  },
+  "directories": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/b-forms/b-forms.git"
+  },
+  "keywords": [
+    "validation"
+  ],
+  "author": "Damien Bezborodov",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/b-forms/b-forms/issues"
+  },
+  "homepage": "https://github.com/b-forms/b-forms",
+  "files": [
+      "src"
+  ]
+}
