@@ -65,6 +65,9 @@ export default class FormValidity {
 
   onSubmit(e) {
     for (const field of this.form.elements) {
+      if (field.type === 'hidden') {
+        continue;
+      }
       this.checkRequired(field);
       if (!field.validity.valid) {
         this.showValidity(field);
@@ -75,6 +78,9 @@ export default class FormValidity {
 
   onChange(e) {
     const field = e.target;
+    if (field.type === 'hidden') {
+      return;
+    }
     this.checkRequired(field);
 
     if (!field.validity.valid) {
@@ -85,6 +91,12 @@ export default class FormValidity {
 
   onChangeAPI(e) {
     const field = e.target;
+    if (field.type === 'hidden') {
+      return;
+    }
+    if ('setCustomValidity' in field === false) {
+      return;
+    }
     this.checkRequired(field);
 
     const url = new URL(this.api, window.location.origin);
@@ -95,14 +107,19 @@ export default class FormValidity {
       data.append(content.dataset.name, content.textContent);
     }
 
-    fetch(url, {
+    const promise = fetch(url, {
       headers: Object.assign({
         'Content-Type': 'application/json',
       }, this.options.headers),
       method: 'post',
       body: JSON.stringify(Object.fromEntries(data.entries())),
     })
-      .then(response => {
+
+    if ('error' in this.options) {
+      promise.catch(this.options.error);
+    }
+
+    promise.then(response => {
         if (response.status !== 200) {
             throw new Error(`Received an HTTP response code ${response.status} from the validation API.`);
         }
@@ -124,13 +141,6 @@ export default class FormValidity {
           this.showValidity(field)
         }
       })
-      .catch(error => {
-        if ('error' in this.options) {
-          this.options.error(error);
-        } else {
-          throw new e;
-        }
-      });
   }
 
   /**
