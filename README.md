@@ -1,5 +1,7 @@
 # B-Forms
 
+_Under development._
+
 JavaScript library for HTML forms.
 
 Features:
