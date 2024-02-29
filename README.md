@@ -12,7 +12,7 @@ Features:
      * Validation of many records within a form table.
    * Server side validation.
      * Python
-       * PostgreSQL / Psycopg. (**[`b-python-postgresql`](https://github.com/b-forms/b-python-postgresql)**)
+       * PostgreSQL / Psycopg. (**[`bf-python-postgresql`](https://github.com/b-forms/bf-python-postgresql)**)
  * Redirect form submission to an API endpoint.
  * Form tables.
    * Appending new rows.
