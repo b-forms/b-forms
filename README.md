@@ -1,6 +1,6 @@
 # B-Forms
 
-Web form library.
+JavaScript library for HTML forms.
 
 Features:
 
